@@ -12,6 +12,7 @@ export default function App() {
     Roboto_700Bold,
   });
   const [title, setTitle] = useState('');
+  const [learnerName, setLearnerName] = useState('');
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [tasks, setTasks] = useState([]);
   const [warning, setWarning] = useState('');
@@ -127,7 +128,20 @@ export default function App() {
               <View style={styles.heading}>
                 <Text style={styles.eyebrow}>TABLERO DE TRABAJO</Text>
                 <Text style={styles.title}>Mi Sprint ADSO</Text>
-                <Text style={styles.welcome}>Hola, Carolina</Text>
+                <TextInput
+                  accessibilityLabel="Tu nombre"
+                  value={learnerName}
+                  onChangeText={setLearnerName}
+                  placeholder="Escribe tu nombre"
+                  placeholderTextColor="#8B95A5"
+                  style={styles.nameInput}
+                  returnKeyType="done"
+                />
+                <Text style={styles.welcome}>
+                  {learnerName.trim()
+                    ? `Hola, ${learnerName.trim()}`
+                    : 'Personaliza tu tablero con tu nombre'}
+                </Text>
                 <Text style={styles.record}>Ficha 3409609</Text>
               </View>
               <View style={styles.headerMark}>
@@ -271,7 +285,20 @@ const styles = StyleSheet.create({
     color: '#D5DCE7',
     fontSize: 16,
     fontFamily: 'Montserrat_400Regular',
-    marginTop: 8,
+    marginTop: 6,
+  },
+  nameInput: {
+    minHeight: 40,
+    maxWidth: 260,
+    paddingHorizontal: 10,
+    borderRadius: 9,
+    borderWidth: 1,
+    borderColor: '#344258',
+    backgroundColor: '#0F1725',
+    color: '#F5F7FA',
+    fontSize: 14,
+    fontFamily: 'Montserrat_400Regular',
+    marginTop: 10,
   },
   record: {
     color: '#9AA6B8',
